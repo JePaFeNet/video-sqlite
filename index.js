@@ -58,9 +58,19 @@ const db = new sqlite.Database("./data.db", sqlite.OPEN_READWRITE, (error) => {
 //   }
 // });
 
-sql = `SELECT * FROM categories WHERE id = ?`;
+// sql = `SELECT * FROM categories WHERE id = ?`;
 
-db.get(sql, [3], (error, rows) => {
+// db.get(sql, [3], (error, rows) => {
+//   if (error) {
+//     console.error(error);
+//   } else {
+//     console.log(rows);
+//   }
+// });
+
+sql = `SELECT * FROM categories WHERE name LIKE ?`;
+
+db.all(sql, ['%a 3%'], (error, rows) => {
   if (error) {
     console.error(error);
   } else {
